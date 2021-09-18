@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "278231390675",
+    "project_id": "viberentit",
+    "storage_bucket": "viberentit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278231390675:android:81f6997851608e68a8b726",
+        "android_client_info": {
+          "package_name": "com.example.VibeRentIt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278231390675-ekfpkv3759433hft4efq21n18duh215f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIh3KxN_o26sZYY5O70uKHEIzhCavpvl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278231390675-ekfpkv3759433hft4efq21n18duh215f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,4 @@
+enum LocationFetchingState{
+  fetching,
+  completedFetching
+}

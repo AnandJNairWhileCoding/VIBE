@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "113070680592",
+    "project_id": "vibestay-b0514",
+    "storage_bucket": "vibestay-b0514.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113070680592:android:82ca821512f7385f58b895",
+        "android_client_info": {
+          "package_name": "com.example.VibeStay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113070680592-227m4032qd9o5n70a2pg7411tknvvf1q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.VibeStay",
+            "certificate_hash": "6c939e07f926ce06ce42fb4b17c11fa29d743768"
+          }
+        },
+        {
+          "client_id": "113070680592-rpmo8u7kldfp185crlenaue65d3t20pd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxjyTPKztQ-kJImWjcIpfvXS6q_BgAEq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113070680592-rpmo8u7kldfp185crlenaue65d3t20pd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

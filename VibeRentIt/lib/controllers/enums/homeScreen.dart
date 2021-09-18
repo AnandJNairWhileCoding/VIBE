@@ -1,0 +1,3 @@
+enum CompletedFetching{
+  yes,no
+}

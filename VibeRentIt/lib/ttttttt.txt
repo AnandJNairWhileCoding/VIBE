@@ -1,0 +1,211 @@
+import 'package:VibeRentIt/controllers/detailedViewScreenController.dart';
+import 'package:VibeRentIt/controllers/modelControllers/ResidenceDetailsListController.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
+
+class DetailedViewScreen extends StatelessWidget {
+  // const DetailedViewScreen({ Key? key }) : super(key: key);
+  final CarouselController carouselController = CarouselController();
+  
+
+  //RETURNS THE LIST OF IMAGE-URLS
+  getImageUrl(int index) {
+    //TO GET THE LIST OF IMAGES FROM THE DEPENDENCIES
+    ResidenceDetailsListController imageController = Get.find();
+    List imageUrl = [];
+    for (var item in imageController.residenceImages[index]) {
+      imageUrl.add(item.image);
+    }
+    return imageUrl;
+  }
+
+//TO BUILD THE SLIDE
+  buildSlide(String imageUrl) {
+    return Container(
+      margin: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+           //background color of box
+          BoxShadow(
+            color: Colors.black38,
+            blurRadius: 4.0, // soften the shadow
+            spreadRadius: 2.0, //extend the shadow
+            offset: Offset(
+              4.0, // Move to right 10  horizontally
+              4.0, // Move to bottom 10 Vertically
+            ),
+          ),
+           
+            
+        ],
+          borderRadius: BorderRadius.circular(10),
+          image:
+              DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.contain)),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    
+    int index = Get.arguments;
+    List imageUrl = getImageUrl(index);
+    ResidenceDetailsListController imageController = Get.find();
+    int noOfImages=imageController.residenceImages[index].length;
+    DetailedViewScreenController thisScreenController=DetailedViewScreenController();
+    
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.delete),color: Colors.deepOrange[400],)],
+      ),
+      body:ListView(
+        children: [
+          SizedBox(height: 13,),
+          CarouselSlider.builder(
+              
+              itemCount: imageUrl.length,
+              itemBuilder: (v, index, vv) {
+                return buildSlide(imageUrl[index]);
+              },
+              options: CarouselOptions(
+
+
+                onPageChanged: (count,c){
+                  thisScreenController.setActiveSlide(count);
+                },
+                initialPage: thisScreenController.activeSlide,
+                enableInfiniteScroll: false,
+                autoPlay: true,
+                height: 300,
+                aspectRatio: 16 / 9,
+                enlargeCenterPage: true,
+
+              )),
+// TRACKER 
+              Center(child: 
+              GetBuilder<DetailedViewScreenController>(
+                
+                builder: (controller){
+                return Row(
+                  children: List.generate(noOfImages, (active){
+                    return InkWell(
+                      onTap: (){
+                        carouselController.jumpToPage(active);
+                      },
+                      child: Container(height: 10,width: 10,
+                      decoration: BoxDecoration(
+                        color: active==controller.activeSlide?Colors.orange:Colors.grey,
+                    
+                    
+                      ),),
+                    );
+                  }),
+                );
+              }),)
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import 'package:VibeRentIt/controllers/modelControllers/ResidenceDetailsListController.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+// import 'package:smooth_page_indicator/smooth_indicators.dart';
+
+class DetailedViewScreen extends StatelessWidget {
+  // const DetailedViewScreen({ Key? key }) : super(key: key);
+
+  //RETURNS THE LIST OF IMAGE-URLS
+  getImageUrl(int index) {
+    //TO GET THE LIST OF IMAGES FROM THE DEPENDENCIES
+    ResidenceDetailsListController imageController = Get.find();
+    List imageUrl = [];
+    for (var item in imageController.residenceImages[index]) {
+      imageUrl.add(item.image);
+    }
+    return imageUrl;
+  }
+
+//TO BUILD THE SLIDE
+  buildSlide(String imageUrl) {
+    return Container(
+      margin: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+           //background color of box
+          BoxShadow(
+            color: Colors.black38,
+            blurRadius: 4.0, // soften the shadow
+            spreadRadius: 2.0, //extend the shadow
+            offset: Offset(
+              4.0, // Move to right 10  horizontally
+              4.0, // Move to bottom 10 Vertically
+            ),
+          ),
+           
+            
+        ],
+          borderRadius: BorderRadius.circular(10),
+          image:
+              DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.contain)),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    int index = Get.arguments;
+    List imageUrl = getImageUrl(index);
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.delete),color: Colors.deepOrange[400],)],
+      ),
+      body: ListView(
+        children: [
+          SizedBox(height: 13,),
+          CarouselSlider.builder(
+
+              itemCount: imageUrl.length,
+              itemBuilder: (v, index, vv) {
+                return buildSlide(imageUrl[index]);
+              },
+              options: CarouselOptions(
+                enableInfiniteScroll: false,
+                autoPlay: true,
+                height: 300,
+                aspectRatio: 16 / 9,
+                enlargeCenterPage: true,
+
+              ))
+        ],
+      ),
+    );
+  }
+}
